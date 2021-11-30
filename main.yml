@@ -1,29 +1,29 @@
 ---
-- name: Deploy, configure, and populate Postgres 12
-  hosts: database_servers
-  become: true
-  gather_facts: false
-  tags:
-    - database_servers
-  roles:
-    - postgres
+#- name: Deploy, configure, and populate Postgres 12
+#  hosts: database_servers
+#  become: true
+#  gather_facts: false
+#  tags:
+#    - database_servers
+#  roles:
+#    - postgres
 
-- name: Deploy, configure, and populate flask repo and virtualenv
-  hosts: app_servers
-  become: true
-  gather_facts: false
-  tags:
-    - application_servers
-    - flask
-  roles:
-    - flask
+#- name: Deploy, configure, and populate flask repo and virtualenv
+#  hosts: app_servers
+#  become: true
+#  gather_facts: false
+#  tags:
+#    - application_servers
+#    - flask
+#  roles:
+#    - flask
 
 - name: Deploy haproxy load balancer
   hosts: load_balancers
   gather_facts: false
   become: true
   roles:
-    - postgres
+    - haproxy
 
 - name: End to end smoke tests
   hosts: app_servers:database_servers

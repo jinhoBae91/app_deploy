@@ -1,5 +1,12 @@
 ---
+- name: module disable
+  command: "sudo dnf -y module disable postgresql"
+ 
+- name: Install Postgres repo
+  command: "wget /home/cloud-user/https://download.postgresql.org/pub/repos/yum/reporpms/EL-8-x86_64/pgdg-redhat-repo-latest.noarch.rpm"
 
+- name: Install rpm
+  command: "rpm -ivh /home/cloud-user/pgdg-redhat-repo-latest.noarch.rpm"
 - name: Install Postgres packages
   package:
     name: "{{ __package }}"
@@ -18,7 +25,7 @@
 
 - when: not r_postgres_init_dir_state.stat.exists
   name: Run Postgres initdb to initialize if postgres not initialized
-  command: "{{ postgres_12_bin_path }}/postgresql-10-setup initdb"
+  command: "{{ postgres_12_bin_path }}/postgresql-12-setup initdb"
   notify: restart_postgres
 
 - name: Setup Postgres for remote password auth
