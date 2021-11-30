@@ -8,7 +8,10 @@
     state: present
  
 - name: Install Postgres repo
-  command: "wget /home/cloud-user/https://download.postgresql.org/pub/repos/yum/reporpms/EL-8-x86_64/pgdg-redhat-repo-latest.noarch.rpm"
+  wget: 
+    get_url: "https://download.postgresql.org/pub/repos/yum/reporpms/EL-8-x86_64/pgdg-redhat-repo-latest.noarch.rpm"
+    dest: /home/cloud-user/
+
 
 - name: Install rpm
   command: "rpm -ivh /home/cloud-user/pgdg-redhat-repo-latest.noarch.rpm"
