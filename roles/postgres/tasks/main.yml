@@ -16,6 +16,7 @@
 
 - name: Install rpm
   command: "rpm -ivh /home/cloud-user/pgdg-redhat-repo-latest.noarch.rpm"
+  ignore_errors: yes
 - name: Install Postgres packages
   package:
     name: "{{ __package }}"
