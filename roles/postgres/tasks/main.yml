@@ -11,6 +11,7 @@
   get_url: 
     url: "https://download.postgresql.org/pub/repos/yum/reporpms/EL-8-x86_64/pgdg-redhat-repo-latest.noarch.rpm"
     dest: /home/cloud-user/
+  ignore_errors: yes
 
 
 - name: Install rpm
